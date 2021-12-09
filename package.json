@@ -9,10 +9,15 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "dashify": "^2.0.0",
+    "firebase-admin": "^10.0.0",
     "lodash.throttle": "^4.1.1",
+    "lzutf8": "^0.6.0",
     "next": "12.0.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "uuid": "^8.3.2",
+    "uuid-readable": "^0.0.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",
