@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
-import styles from '../../../styles/Play.module.css'
+import styles from '../../../styles/Share.module.css'
 import CenterContainer from '../../../components/CenterContainer'
 import SpotifyEmbed from '../../../components/SpotifyEmbed'
 
@@ -41,8 +41,9 @@ export default function Share() {
     useEffect(() => {
         const { correct } = router.query;
         if (correct) {
-            console.log(correct.split(',').length / 5)
-            setScore(Math.min((correct.split(',').length / 5) * 100, 100))
+            const answers = correct.split('')
+            const numRight = answers.reduce((accum, curr) => (curr === '1' ? accum + 1 : accum), 0)
+            setScore(Math.min(numRight * 20, 100))
         }
         if (Object.keys(playerData).length === 0) return
         if (Object.keys(playerData.songIDs).length === 0) return
@@ -54,10 +55,12 @@ export default function Share() {
     }, [playerData, score, router])
 
     return (
-        <CenterContainer flash>
-            <h1>You Got {score}% of {playerData.username}</h1>
+        <CenterContainer>
+            <h1 className={styles.report}>
+                You got <span className={styles.percent}>{score}%</span> of {playerData.username}&apos;s songs!
+            </h1>
             {topFive.map(songId => (
-                <div key={songId} >
+                <div key={songId} className={styles.songcontainer}>
                     <SpotifyEmbed src={`https://open.spotify.com/embed/track/${songId}`} />
                 </div>
             ))}

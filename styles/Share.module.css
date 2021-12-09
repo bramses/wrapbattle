@@ -1,0 +1,20 @@
+.percent {
+  color: var(--primary-main);
+}
+
+.report {
+  max-width: var(--width);
+  text-align: center;
+}
+
+.songcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--spacing) 0px;
+  padding: var(--spacing);
+  min-width: calc(var(--width) * 4 / 3 - var(--spacing) * 5);
+
+  border: 1px solid var(--secondary-dark);
+  border-radius: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0;
+}
