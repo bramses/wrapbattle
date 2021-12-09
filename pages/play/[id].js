@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 
 import styles from '../../styles/Play.module.css'
-import CenterContainer from '../../components/centercontainer'
+import CenterContainer from '../../components/CenterContainer'
 import SpotifyEmbed from '../../components/SpotifyEmbed'
 import StyledButton from '../../components/StyledButton'
 

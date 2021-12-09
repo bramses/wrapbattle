@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 
 import styles from '../styles/Play.module.css'
-import CenterContainer from '../components/centercontainer'
+import CenterContainer from '../components/CenterContainer'
 
 export default function Share() {
     return (

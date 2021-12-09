@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 
 import styles from '../../../styles/Play.module.css'
-import CenterContainer from '../../../components/centercontainer'
+import CenterContainer from '../../../components/CenterContainer'
 import SpotifyEmbed from '../../../components/SpotifyEmbed'
 
 export default function Share() {
@@ -11,7 +11,7 @@ export default function Share() {
     const router = useRouter()
     const [playerData, setplayerData] = useState({})
 
-    useEffect(() => {        
+    useEffect(() => {
         async function fetchData() {
             const { slug } = router.query;
             if (slug) {
@@ -20,7 +20,7 @@ export default function Share() {
                 setplayerData(data)
                 console.log(data)
             }
-            
+
         }
         fetchData()
     }, [router])
