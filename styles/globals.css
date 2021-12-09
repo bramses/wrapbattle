@@ -1,9 +1,28 @@
+:root {
+  /* Construction Gold Yellow */
+  --primary-main: #fbc02d;
+  --primary-light: #fff263;
+  --primary-dark: #c49000;
+  --primary-text: white;
+
+  /* Dark Greyish Yellow */
+  --secondary-main: #42423f;
+  --secondary-light: #82827d;
+  --secondary-dark: #1a1a18;
+
+  /* Spacing Variables */
+  --spacing: 4px;
+  --width: 300px;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--primary-text);
+  background-color: var(--secondary-main);
 }
 
 a {
