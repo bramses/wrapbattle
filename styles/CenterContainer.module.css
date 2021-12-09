@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-Height: 100vh;
+  height: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.border {
+  border: var(--spacing) solid var(--primary-main);
+}
+
+.greyBorder {
+  border: var(--spacing) solid var(--secondary-light);
+}
+
+@keyframes flashborder {
+  0%   { border-color: var(--secondary-main); }
+  100% { border-color: var(--primary-main); }
+}
+
+.flash {
+  animation: 3s infinite alternate flashborder;
+}
