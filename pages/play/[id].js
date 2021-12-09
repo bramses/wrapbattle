@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import styles from '../../styles/Play.module.css'
 import CenterContainer from '../../components/centercontainer'
 import SpotifyEmbed from '../../components/SpotifyEmbed'
+import StyledButton from '../../components/StyledButton'
 
 export default function Play() {
     const router = useRouter()
@@ -36,18 +37,52 @@ export default function Play() {
         )
     }, [playerData])
 
+    const [selectedTracks, setSelectedTracks] = useState([])
+
+    const handleAdd = (songId) => {
+        if (selectedTracks.length >= 5) return
+        setSelectedTracks([...selectedTracks, songId])
+    }
+
+    const handleRemove = (songId) => {
+        setSelectedTracks(selectedTracks.filter(aSongId => aSongId !== songId))
+    }
+
+    const handleClear = () => {
+        setSelectedTracks([])
+    }
+
+    const handleSubmit = () => {
+        console.log('submitting the following!', selectedTracks)
+    }
+
+    if (Object.keys(playerData).length === 0) return <></>
     return (
         <CenterContainer flash>
             <h1 className={styles.header}>Spotify WrapBattle</h1>
             <p className={styles.subtitle}>
-                How well do you know HostName?<br />
+                How well do you know <span className={styles.username}>{playerData.username}</span>?<br />
                 Pick the songs that you think are their Top 5 from 2021!
             </p>
+
+            <div className={styles.actions}>
+                <StyledButton onClick={handleClear}>✕ CLEAR</StyledButton>
+                <StyledButton onClick={handleSubmit}>SUBMIT</StyledButton>
+            </div>
 
             {randomTrackList.map(songId => (
                 <div key={songId} className={styles.songcontainer}>
                     <SpotifyEmbed src={`https://open.spotify.com/embed/track/${songId}`} />
-                    <div className={styles.question}>?</div>
+
+                    {selectedTracks.includes(songId) ? (
+                        <div className={`${styles.question} ${styles.checkmark}`} onClick={() => handleRemove(songId)}>
+                            {selectedTracks.findIndex(el => el === songId) + 1}
+                        </div>
+                    ) : (
+                        <div className={styles.question} onClick={() => handleAdd(songId)}>
+                            ?
+                        </div>
+                    )}
                 </div>
             ))}
         </CenterContainer>
