@@ -5,9 +5,15 @@ import axios from 'axios'
 import styles from '../../styles/SongSearch.module.css'
 import CenterContainer from '../../components/CenterContainer'
 import StyledButton from '../../components/StyledButton'
+import { useRouter } from 'next/router'
 
 const SongSearch = () => {
+  const router = useRouter()
   const [name, setName] = useState('')
+
+  const routeTo = (href) => {
+    router.push(href)
+}
 
   const [searchResults, setSearchResults] = useState([])
   const getAndSetSearchResults = useCallback(throttle((value) => {
@@ -41,11 +47,13 @@ const SongSearch = () => {
     setSelectedSongs(selectedSongs.filter(aSongObj => aSongObj.id !== songId))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('submitting your list of songs to the server!')
     const selectedSongIds = selectedSongs.map(songObj => songObj.id)
     console.log({ songIDs: selectedSongIds, username: name })
-    axios.post('/api/create', { songIDs: selectedSongIds, username: name })
+    const res = await axios.post('/api/create', { songIDs: selectedSongIds, username: name })
+    const data = await res.data
+    routeTo(`/share/${data.slug}`)
   }
 
   const renderSelectedSong = (songObj, index) => (
