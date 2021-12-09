@@ -69,7 +69,7 @@ export default function Play() {
             }
         })
         
-        routeTo(`/share/${playerData.slug}/${points.join(',')}`)
+        routeTo(`/share/${playerData.slug}/${points.join('')}`)
     }
 
     if (Object.keys(playerData).length === 0) return <></>
