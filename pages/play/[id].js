@@ -17,7 +17,6 @@ export default function Play() {
                 const res = await axios.post('/api/read', { slug: id });
                 const data = await res.data
                 setplayerData(data)
-                console.log(data)
             }
 
         }
@@ -52,8 +51,25 @@ export default function Play() {
         setSelectedTracks([])
     }
 
+    const routeTo = (href) => {
+        router.push(href)
+    }
+
     const handleSubmit = () => {
-        console.log('submitting the following!', selectedTracks)
+        const correctSongs = Object
+        .values(playerData.songIDs)
+        .slice(0, 5)
+
+        let points = []
+        correctSongs.forEach(songId => {
+            if (selectedTracks.includes(songId)) {
+                points.push(1)
+            } else {
+                points.push(0)
+            }
+        })
+        
+        routeTo(`/share/${playerData.slug}/${points.join(',')}`)
     }
 
     if (Object.keys(playerData).length === 0) return <></>
