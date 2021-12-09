@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/Share.module.css'
 import CenterContainer from '../../../components/CenterContainer'
 import SpotifyEmbed from '../../../components/SpotifyEmbed'
+import StyledButton from '../../../components/StyledButton'
 
 export default function Share() {
 
@@ -32,7 +33,7 @@ export default function Share() {
 
     const [topFive, setTopFive] = useState([])
     const [score, setScore] = useState(0)
-    const [correctSongs, setCorrectSongs] = useState([]) // the songs to highlight in green
+    const [correctSongs, setCorrectSongs] = useState([])
 
     const onSubmit = async () => {
         routeTo(`/create`);
@@ -43,6 +44,7 @@ export default function Share() {
         if (correct) {
             const answers = correct.split('')
             const numRight = answers.reduce((accum, curr) => (curr === '1' ? accum + 1 : accum), 0)
+            setCorrectSongs(answers.map(answer => answer === '1'))
             setScore(Math.min(numRight * 20, 100))
         }
         if (Object.keys(playerData).length === 0) return
@@ -59,12 +61,17 @@ export default function Share() {
             <h1 className={styles.report}>
                 You got <span className={styles.percent}>{score}%</span> of {playerData.username}&apos;s songs!
             </h1>
-            {topFive.map(songId => (
+            {topFive.map((songId, index) => (
                 <div key={songId} className={styles.songcontainer}>
                     <SpotifyEmbed src={`https://open.spotify.com/embed/track/${songId}`} />
+                    {correctSongs[index] ? (
+                        <div className={styles.checkmark}>✓</div>
+                    ) : (
+                        <div className={`${styles.checkmark} ${styles.wrong}`}>✕</div>
+                    )}
                 </div>
             ))}
-            <button onClick={onSubmit}>Make Your Own!</button>
+            <StyledButton style={{ marginTop: '16px' }} onClick={onSubmit}>Make Your Own!</StyledButton>
         </CenterContainer>
     )
 }

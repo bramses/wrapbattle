@@ -18,3 +18,25 @@
   border: 1px solid var(--secondary-dark);
   border-radius: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0;
 }
+
+.checkmark {
+  font-size: 1.5rem;
+  color: var(--spoopify);
+  width: calc(var(--width) / 30 * 4);
+  height: calc(var(--width) / 30 * 4);
+  margin-right: calc(var(--spacing) * 3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.wrong {
+  font-size: 1.25rem;
+  color: var(--secondary-light);
+}
