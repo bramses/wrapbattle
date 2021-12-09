@@ -11,6 +11,11 @@ export default function Share() {
     const router = useRouter()
     const [playerData, setplayerData] = useState({})
 
+    const routeTo = (href) => {
+        router.push(href)
+    }
+
+
     useEffect(() => {
         async function fetchData() {
             const { slug } = router.query;
@@ -27,7 +32,12 @@ export default function Share() {
 
     const [topFive, setTopFive] = useState([])
     const [score, setScore] = useState(0)
-    const [correctSongs, setCorrectSongs] = useState([])
+    const [correctSongs, setCorrectSongs] = useState([]) // the songs to highlight in green
+
+    const onSubmit = async () => {
+        routeTo(`/create`);
+      }
+
     useEffect(() => {
         const { correct } = router.query;
         if (correct) {
@@ -51,7 +61,7 @@ export default function Share() {
                     <SpotifyEmbed src={`https://open.spotify.com/embed/track/${songId}`} />
                 </div>
             ))}
-            <button>Make Your Own!</button>
+            <button onClick={onSubmit}>Make Your Own!</button>
         </CenterContainer>
     )
 }
