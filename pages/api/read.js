@@ -14,6 +14,7 @@ export default async function handler(req, res) {
         if (sessionsData.some(session => session.slug === slug)) {
             console.log('Session found');
             const session = sessionsData.find(session => session.slug === slug);
+            console.log(session)
             res.status(200).json(session);
         } else {
             res.status(404).json({

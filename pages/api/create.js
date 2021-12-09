@@ -6,21 +6,10 @@ import {v4 as uuid} from 'uuid';
 
 export default async function handler(req, res) {
     try {
-        const songIDs = {
-            "1": "3USxtqRwSYz57Ewm6wWRMp",
-            "2": "5J6rTmMjF9DVIAF8G3M9n4",
-            "3": "4ZtFanR9U6ndgddUvNcjcG",
-            "4": "3Vi5XqYrmQgOYBajMWSvCi",
-            "5": "4iN16F8JtVxG2UTzp3avGl",
-            "6": "50nfwKoDiSYg8zOCREWAm5",
-            "7": "3Kkjo3cT83cw09VJyrLNwX",
-            "8": "3QPBocWfIcOCdFFvmqn60F",
-            "9": "5GzpstdtupjJcu0JR5j3v6",
-            "10": "00Blm7zeNqgYLPtW6zg8cj"
-        }
+        const { songIDs, username } = req.body;
+        
 
         const shortId = dashify(id.short(uuid()));
-        const username = 'test';
         const obj = {
             slug: shortId,
             songIDs,
@@ -35,11 +24,11 @@ export default async function handler(req, res) {
             res.status(400).end();
         } else {
             console.log(obj);
-            const { id } = await db.collection('sessions').add({
+            const { fbId } = await db.collection('sessions').add({
                 ...obj,
                 created: new Date().toISOString(),
             });
-            res.status(200).json({ id });
+            res.status(200).json({...obj});
         }
     } catch (e) {
         console.error(e);
