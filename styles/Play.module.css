@@ -1,0 +1,33 @@
+.header {
+  color: var(--secondary-light);
+  margin-bottom: var(--spacing);
+}
+
+.subtitle {
+  margin: var(--spacing);
+  max-width: var(--width);
+  text-align: center;
+}
+
+.songcontainer {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing) 0px;
+  padding: var(--spacing);
+  min-width: var(--width);
+
+  border: 1px solid var(--secondary-dark);
+  border-radius: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0;
+}
+
+.songcontainer:hover {
+  border-color: var(--primary-main);
+  background-color: var(--primary-main);
+  color: black;
+}
+
+.songcontainer:active {
+  border-color: var(--secondary-dark);
+  background-color: inherit;
+  color: inherit;
+}
