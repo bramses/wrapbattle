@@ -23,7 +23,8 @@ export default async function handler(req, res) {
         if (sessionsData.some(session => session.slug === slug)) {
             res.status(400).end();
         } else {
-            const { fbId } = await db.collection('sessions').add({
+            console.log(`creating session :: ${shortId}`);
+            await db.collection('sessions').add({
                 ...obj,
                 created: new Date().toISOString(),
             });
