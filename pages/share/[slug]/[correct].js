@@ -9,6 +9,9 @@ import StyledButton from '../../../components/StyledButton'
 
 export default function Share() {
 
+    
+
+    const [quote, setQuote] = useState('')
     const router = useRouter()
     const [playerData, setplayerData] = useState({})
 
@@ -37,15 +40,59 @@ export default function Share() {
 
     const onSubmit = async () => {
         routeTo(`/create`);
-      }
-
+    }
+    
     useEffect(() => {
+        const quotes = [
+            {
+                quote: "Ouchhhh, you might wanna pass (name) the aux cord more frequently",
+                range: [0, 60],
+            },
+            {
+                quote: "They say music brings us together. Unfortunately for you and (name) that does not seem to be the case.",
+                range: [0, 40],
+            },
+            {
+                quote: "You know nothing Jon Snow. Ok you may know some things, just not (name)'s music tastes.",
+                range: [0, 40],
+            },
+            {
+                quote: "Bing Bong! You got a lot wrong. You should inform (name) (and tell Ariana I miss her)",
+                range: [0, 40],
+            },
+            {
+                quote: "Well played. (name) should be impressed at your knowledge of them. Or creeped out, I guess.",
+                range: [80, 100],
+            },
+            {
+                quote: "You read (name) like a book. Ok, more like a novella.",
+                range: [40, 80],
+            },
+            {
+                quote: "You passed the course of (name). Idk how many credits it's worth, but for sure it's worth something (no refunds)",
+                range: [60, 100],
+            },
+            {
+                quote: "The spirit of (name) is within you.\n...do with that what you will.",
+                range: [60, 80],
+            },
+            {
+                quote: "I'm not a wrapper. But you and (name) will jam happily ever after.",
+                range: [80, 100],
+            }
+        ]
+
         const { correct } = router.query;
         if (correct) {
             const answers = correct.split('')
             const numRight = answers.reduce((accum, curr) => (curr === '1' ? accum + 1 : accum), 0)
             setCorrectSongs(answers.map(answer => answer === '1'))
             setScore(Math.min(numRight * 20, 100))
+            const filteredQuotes = quotes.filter(quote => {
+                return quote.range[0] <= score && quote.range[1] >= score
+            })
+            const randomQuote = filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
+            setQuote(randomQuote.quote.replace('(name)', playerData.username))
         }
         if (Object.keys(playerData).length === 0) return
         if (Object.keys(playerData.songIDs).length === 0) return
@@ -59,6 +106,9 @@ export default function Share() {
     return (
         <CenterContainer>
             <h1 className={styles.report}>
+                {quote}
+                <br />
+                <br />
                 You got <span className={styles.percent}>{score}%</span> of {playerData.username}&apos;s songs!
             </h1>
             {topFive.map((songId, index) => (
