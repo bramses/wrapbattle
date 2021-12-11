@@ -39,7 +39,7 @@ export default function Share() {
     const [correctSongs, setCorrectSongs] = useState([])
 
     const onSubmit = async () => {
-        routeTo(`/create`);
+        routeTo(`/`);
     }
     
     useEffect(() => {

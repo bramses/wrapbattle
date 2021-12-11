@@ -78,7 +78,14 @@ export default function Play() {
             <h1 className={styles.header}>Spotify WrapBattle</h1>
             <p className={styles.subtitle}>
                 How well do you know <span className={styles.username}>{playerData.username}</span>?<br />
-                Pick the songs that you think are their Top 5 from 2021!
+                Pick the songs that you think are their Top 5 from 2021!<br /><br />
+                But be careful, they added five fake songs to throw you off.<br /> How well do you really know <span className={styles.username}>{playerData.username}</span>? Lets find out!<br /><br />
+
+                Rules:<br />
+                - choose songs in order from 1:5<br />
+                - If you get them all in the correct order you get a perfect score<br />
+                - If you get all 5 in a non perfect order you pass<br />
+                - If you get em wrong, wellllll<br />
             </p>
 
             <div className={styles.actions}>
