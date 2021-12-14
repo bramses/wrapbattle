@@ -139,6 +139,13 @@ const SongSearch = () => {
           Create my WrapBattle!
         </StyledButton>
       )}
+
+      <div className={styles.footer}>
+        Made by&nbsp;
+        <a className={styles.link} href="https://www.bramadams.dev/" target="_blank" rel="noreferrer">Bram</a>
+        &nbsp;&&nbsp;
+        <a className={styles.link} href="https://www.benzenker.me/" target="_blank" rel="noreferrer">Ben</a>
+      </div>
     </CenterContainer>
   );
 };
