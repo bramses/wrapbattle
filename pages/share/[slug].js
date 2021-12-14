@@ -32,6 +32,13 @@ export default function ShareLink() {
             });
     }
 
+    const openTweet = () => {
+      window.open(
+        `https://twitter.com/intent/tweet?text=Can%20you%20guess%20what%20my%20top%20five%20songs%20were%20in%202021?%20https://www.wrapbattle.xyz/play/${url}`,
+        '_blank',
+        'noreferrer'
+      )
+    }
 
     return (
         <CenterContainer>
@@ -42,16 +49,16 @@ export default function ShareLink() {
             <p className={styles.link}>{`https://www.wrapbattle.xyz/play/${url}`}</p>
             <div className={styles.buttonContainer}>
                 <StyledButton onClick={copyText}>Copy to Clipboard</StyledButton>
-                <button className={`${buttonStyles.button} ${styles.tweet}`}>
+                <button
+                  className={`${buttonStyles.button} ${styles.tweet}`}
+                  onClick={openTweet}
+                >
                     <i className="fa fa-twitter" />
-                    <a
+                    <span
                       className={styles.tweettext}
-                      href={`https://twitter.com/intent/tweet?text=Can%20you%20guess%20what%20my%20top%20five%20songs%20were%20in%202021?%20https://www.wrapbattle.xyz/play/${url}`}
-                      target="_blank"
-                      rel="noreferrer"
                     >
                         Tweet
-                    </a>
+                    </span>
                 </button>
             </div>
         </CenterContainer>
