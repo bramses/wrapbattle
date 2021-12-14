@@ -9,6 +9,31 @@
   text-align: center;
 }
 
+.infocontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  border: 1px solid var(--secondary-light);
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  text-align: center;
+  margin-left: 8px;
+}
+
+.info:hover,
+.info:active {
+  color: var(--spoopify);
+  border-color: var(--spoopify);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .songcontainer {
   display: flex;
   align-items: center;

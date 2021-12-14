@@ -6,6 +6,7 @@ import styles from '../../styles/Play.module.css'
 import CenterContainer from '../../components/CenterContainer'
 import SpotifyEmbed from '../../components/SpotifyEmbed'
 import StyledButton from '../../components/StyledButton'
+import Modal from '../../components/Modal'
 
 export default function Play() {
     const router = useRouter()
@@ -92,6 +93,8 @@ export default function Play() {
         routeTo(`/share/${playerData.slug}/${pointHash}`)
     }
 
+    const [modalOpen, setModalOpen] = useState(false)
+
     if (Object.keys(playerData).length === 0) return <></>
     return (
         <CenterContainer flash>
@@ -101,13 +104,24 @@ export default function Play() {
                 Pick the songs that you think are their <span className={styles.topf}>Top 5</span> from 2021!<br /><br />
                 <i>But be careful, they added five fake songs to throw you off.</i><br /><br />
 
-                Rules:<br />
-                <ul className={styles.list}>
-                    <li>Choose songs in order from 1 to 5<br /></li>
-                    <li>If you get them all in the correct order, you get a perfect score<br /></li>
-                    <li>If you get all 5 in a non perfect order, you pass<br /></li>
-                    <li>If you get em wrong, wellllll<br /></li>
-                </ul>
+                <div className={styles.infocontainer}>
+                  How to Score:
+                  <div className={styles.info} onClick={() => setModalOpen(true)}>view</div>
+                </div>
+
+                {modalOpen && (
+                  <Modal onClose={() => setModalOpen(false)}>
+                    <div>
+                      <br />How to Score:<br /><br />
+                      <ul className={styles.list}>
+                          <li>Choose songs in order from 1 to 5<br /></li>
+                          <li>If you get them all in the correct order, you get a perfect score<br /></li>
+                          <li>If you get all 5 in a non perfect order, you pass<br /></li>
+                          <li>If you get em wrong, wellllll<br /></li>
+                      </ul>
+                    </div>
+                  </Modal>
+                )}
             </div>
 
             <div className={styles.actions}>
