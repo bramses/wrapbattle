@@ -7,6 +7,8 @@
   height: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
 }
 
 .border {

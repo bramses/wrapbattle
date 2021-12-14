@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
+import styles from '../../styles/ShareLink.module.css'
+import buttonStyles from '../../styles/StyledButton.module.css'
+import CenterContainer from '../../components/CenterContainer'
+import StyledButton from '../../components/StyledButton'
 
 export default function ShareLink() {
     const router = useRouter()
@@ -29,19 +34,26 @@ export default function ShareLink() {
 
 
     return (
-        <div className="share-link">
-            <div className="share-link__container">
-                <div className="share-link__container__title">
-                    <h2>Share this link with your friends</h2>
-                </div>
-                <p>{`https://www.wrapbattle.xyz/play/${url}`}</p>
-                <button className="share-link__container__button" onClick={copyText}>Copy to Clipboard</button>
-                <button>
-                    <a className="twitter-share-button"
-                    href={`https://twitter.com/intent/tweet?text=Can%20you%20guess%20what%20my%20top%20five%20songs%20were%20in%202021?%20https://www.wrapbattle.xyz/play/${url}`}>
-                    Tweet</a>
+        <CenterContainer>
+            <Head>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            </Head>
+            <h2 className={styles.header}>Share this link with your friends</h2>
+            <p className={styles.link}>{`https://www.wrapbattle.xyz/play/${url}`}</p>
+            <div className={styles.buttonContainer}>
+                <StyledButton onClick={copyText}>Copy to Clipboard</StyledButton>
+                <button className={`${buttonStyles.button} ${styles.tweet}`}>
+                    <i className="fa fa-twitter" />
+                    <a
+                      className={styles.tweettext}
+                      href={`https://twitter.com/intent/tweet?text=Can%20you%20guess%20what%20my%20top%20five%20songs%20were%20in%202021?%20https://www.wrapbattle.xyz/play/${url}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                        Tweet
+                    </a>
                 </button>
             </div>
-        </div>
+        </CenterContainer>
     )
 }

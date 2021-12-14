@@ -1,0 +1,41 @@
+.header {
+  color: var(--secondary-light);
+  width: var(--width);
+  text-align: center;
+}
+
+.link {
+  font-family: monospace;
+  font-size: 1rem;
+  min-width: var(--width);
+  text-align: center;
+  margin-bottom: ;
+  font-weight: bold;
+  margin: 0px var(--spacing) calc(var(--spacing) * 8) var(--spacing);
+  word-break: break-all;
+}
+
+.tweet {
+  color: #1DA1F2 !important;
+  border-color: #1DA1F2 !important;
+}
+
+.tweet:hover {
+  background-color: #1DA1F2 !important;
+  border-color: #1DA1F2 !important;
+  color: white !important;
+}
+
+.tweet:active {
+  background-color: white !important;
+  border-color: white !important;
+  color: #1DA1F2 !important;
+}
+
+.tweettext {
+  margin-left: var(--spacing);
+}
+
+.buttonContainer {
+  display: flex;
+}
