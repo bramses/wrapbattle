@@ -76,7 +76,7 @@ export default function Play() {
     return (
         <CenterContainer flash>
             <h1 className={styles.header}>Spotify WrapBattle</h1>
-            <p className={styles.subtitle}>
+            <div className={styles.subtitle}>
                 How well do you know <span className={styles.username}>{playerData.username}</span>?<br /><br />
                 Pick the songs that you think are their <span className={styles.topf}>Top 5</span> from 2021!<br /><br />
                 <i>But be careful, they added five fake songs to throw you off.</i><br /><br />
@@ -88,7 +88,7 @@ export default function Play() {
                     <li>If you get all 5 in a non perfect order, you pass<br /></li>
                     <li>If you get em wrong, wellllll<br /></li>
                 </ul>
-            </p>
+            </div>
 
             <div className={styles.actions}>
                 <StyledButton onClick={handleClear}>✕ CLEAR</StyledButton>

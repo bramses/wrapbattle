@@ -9,9 +9,9 @@ import StyledButton from '../../../components/StyledButton'
 
 export default function Share() {
 
-    
 
-    const [quote, setQuote] = useState('')
+
+    const [quote, setQuote] = useState(['', ''])
     const router = useRouter()
     const [playerData, setplayerData] = useState({})
 
@@ -41,7 +41,7 @@ export default function Share() {
     const onSubmit = async () => {
         routeTo(`/`);
     }
-    
+
     useEffect(() => {
         const quotes = [
             {
@@ -92,7 +92,7 @@ export default function Share() {
                 return quote.range[0] <= score && quote.range[1] >= score
             })
             const randomQuote = filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
-            setQuote(randomQuote.quote.replace('(name)', playerData.username))
+            setQuote(randomQuote.quote.split('(name)'))
         }
         if (Object.keys(playerData).length === 0) return
         if (Object.keys(playerData.songIDs).length === 0) return
@@ -105,10 +105,12 @@ export default function Share() {
 
     return (
         <CenterContainer>
+            <h2 className={styles.quote}>
+              {quote[0]}
+              <span className={styles.name}>{playerData.username}</span>
+              {quote[1]}
+            </h2>
             <h1 className={styles.report}>
-                {quote}
-                <br />
-                <br />
                 You got <span className={styles.percent}>{score}%</span> of {playerData.username}&apos;s songs!
             </h1>
             {topFive.map((songId, index) => (

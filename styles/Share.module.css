@@ -1,5 +1,14 @@
-.percent {
+.quote {
+  width: var(--width);
+  text-align: center;
+}
+
+.name {
   color: var(--primary-main);
+}
+
+.percent {
+  color: var(--spoopify);
 }
 
 .report {
