@@ -4,9 +4,14 @@ const CenterContainer = ({
   flash = false,
   noBorder = false,
   greyBorder = false,
+  homepage = false,
   children,
 }) => {
   let classNames = [styles.container]
+
+  if (homepage) {
+    classNames.push(styles.homepage)
+  }
 
   if (!noBorder) {
     if (greyBorder) {

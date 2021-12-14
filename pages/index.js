@@ -71,82 +71,87 @@ const SongSearch = () => {
   )
 
   return (
-    <CenterContainer greyBorder>
-      {modalOpen && (
-        <Modal onClose={() => setModalOpen(false)}>
-            <p>Welcome to WrapBattle<br /><br />
-                As the speaker it is your job to create a memory your guests will never forget, your Spotify Wrapped.
-                <br />
-                <br />
-                Rules:
-                <br />
-                - Enter your top 5 songs from Wrapped
-                <br />
-                - Enter five more songs to mix people up
-                <br />
-                - Share your link on Twitter or directly, and see how your friends do guessing your top 5
-            </p>
-        </Modal>
-      )}
+    <>
+      <CenterContainer greyBorder homepage>
+        {modalOpen && (
+          <Modal onClose={() => setModalOpen(false)}>
+              <p>Welcome to WrapBattle<br /><br />
+                  As the speaker it is your job to create a memory your guests will never forget, your Spotify Wrapped.
+                  <br />
+                  <br />
+                  Rules:
+                  <br />
+                  - Enter your top 5 songs from Wrapped
+                  <br />
+                  - Enter five more songs to mix people up
+                  <br />
+                  - Share your link on Twitter or directly, and see how your friends do guessing your top 5
+              </p>
+          </Modal>
+        )}
 
-      <div className={styles.infocontainer}>
-        <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
-        <p>Welcome to WrapBattle</p>
-      </div>
+        <div className={styles.infocontainer}>
+          <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
+          <p>Welcome to WrapBattle</p>
+        </div>
 
 
-      <h1 className={styles.header}>What should we call You?</h1>
-      <input
-        className={styles.input}
-        placeholder="Your Name"
-        value={name}
-        onChange={event => setName(event.target.value)}
-      />
-
-      <h1 className={styles.header}>Enter Your <span style={{ color: "#1DB954" }}>Top 5</span> Songs</h1>
-
-      {selectedSongs.slice(0, 5).map(renderSelectedSong)}
-
-      {selectedSongs.length >= 5 && (
-        <h1>Enter 5 <span style={{ color: "#1DB954" }}>Misleading</span> Songs</h1>
-      )}
-
-      {selectedSongs.slice(5).map(renderSelectedSong)}
-
-      {selectedSongs.length < 10 && (
+        <h1 className={styles.header}>What should we call You?</h1>
         <input
           className={styles.input}
-          placeholder="search for a song..."
-          value={inputValue}
-          onChange={handleKeystrokes}
+          placeholder="Your Name"
+          value={name}
+          onChange={event => setName(event.target.value)}
         />
-      )}
 
-      {searchResults.map((result) => (
-        <div key={result.id} className={styles.resultcontainer}>
-          <span className={styles.result}>
-            {result.name}<br />
-            <span className={styles.artist}>{result.artist}</span>
-          </span>
-          <button className={styles.addbtn} onClick={() => handleAdd(result)}>
-            +
-          </button>
-        </div>
-      ))}
+        <h1 className={styles.header}>Enter Your <span style={{ color: "#1DB954" }}>Top 5</span> Songs</h1>
 
-      {selectedSongs.length >= 10 && (
-        <StyledButton style={{ marginTop: '16px' }} onClick={handleSubmit}>
-          Create my WrapBattle!
-        </StyledButton>
-      )}
+        {selectedSongs.slice(0, 5).map(renderSelectedSong)}
 
+        {selectedSongs.length >= 5 && (
+          <h1>Enter 5 <span style={{ color: "#1DB954" }}>Misleading</span> Songs</h1>
+        )}
+
+        {selectedSongs.slice(5).map(renderSelectedSong)}
+
+        {selectedSongs.length < 10 && (
+          <input
+            className={styles.input}
+            placeholder="search for a song..."
+            value={inputValue}
+            onChange={handleKeystrokes}
+          />
+        )}
+
+        {searchResults.map((result) => (
+          <div key={result.id} className={styles.resultcontainer}>
+            <span className={styles.result}>
+              {result.name}<br />
+              <span className={styles.artist}>{result.artist}</span>
+            </span>
+            <button className={styles.addbtn} onClick={() => handleAdd(result)}>
+              +
+            </button>
+          </div>
+        ))}
+
+        {selectedSongs.length >= 10 && (
+          <StyledButton style={{ marginTop: '16px' }} onClick={handleSubmit}>
+            Create my WrapBattle!
+          </StyledButton>
+        )}
+
+        <div style={{ width: '1px', height: '1px', marginBotton: '100px' }} />
+
+
+      </CenterContainer>
       <div className={styles.footer}>
         Made by&nbsp;
         <a className={styles.link} href="https://www.bramadams.dev/" target="_blank" rel="noreferrer">Bram</a>
         &nbsp;&&nbsp;
         <a className={styles.link} href="https://www.benzenker.me/" target="_blank" rel="noreferrer">Ben</a>
       </div>
-    </CenterContainer>
+    </>
   );
 };
 

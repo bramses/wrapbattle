@@ -11,6 +11,10 @@
   padding-right: var(--spacing);
 }
 
+.homepage {
+  min-Height: calc(100vh - 64px);
+}
+
 .border {
   border: var(--spacing) solid var(--primary-main);
 }
