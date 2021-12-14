@@ -70,20 +70,21 @@ const SongSearch = () => {
 
   return (
     <CenterContainer greyBorder>
-      <p className={styles.intro}>Welcome to the WrapBattle.<br /> 
+      <p>Welcome to WrapBattle</p>
+      <p className={styles.intro}>
 As the speaker it is your job to create a memory your guests will never forget, your Spotify Wrapped.
 <br />
 <br />
 Rules:
 <br />
-- enter your top 5 songs from Wrapped
+- Enter your top 5 songs from Wrapped
 <br />
 - Enter five more songs to mix people up
 <br />
 - Share your link on Twitter or directly, and see how your friends do guessing your top 5
 </p>
 
-      <h1>What Should we Call You?</h1>
+      <h1 className={styles.header}>What should we call You?</h1>
       <input
         className={styles.input}
         placeholder="Your Name"
@@ -91,7 +92,7 @@ Rules:
         onChange={event => setName(event.target.value)}
       />
 
-      <h1>Enter Your <span style={{ color: "#1DB954" }}>Top 5</span> Songs</h1>
+      <h1 className={styles.header}>Enter Your <span style={{ color: "#1DB954" }}>Top 5</span> Songs</h1>
 
       {selectedSongs.slice(0, 5).map(renderSelectedSong)}
 
@@ -124,7 +125,7 @@ Rules:
 
       {selectedSongs.length >= 10 && (
         <StyledButton style={{ marginTop: '16px' }} onClick={handleSubmit}>
-          Let&apos;s get this started!
+          Create my WrapBattle!
         </StyledButton>
       )}
     </CenterContainer>

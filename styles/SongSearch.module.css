@@ -1,14 +1,19 @@
 .intro {
   color: var(--secondary-light);
+  width: var(--width);
+}
+
+.header {
+  width: var(--width);
 }
 
 .input {
-  padding: 8px;
-  margin: 8px 0px 32px 0px;
-  width: 300px;
-  border-radius: 4px;
+  padding: calc(var(--spacing) * 2);
+  margin: calc(var(--spacing) * 2) 0px calc(var(--spacing) * 8) 0px;
+  width: var(--width);
+  border-radius: var(--spacing);
 
-  border: 1px solid #82827d;
+  border: 1px solid var(--secondary-light);
   box-shadow: none;
   background-color: transparent;
   color: #ffffff;
@@ -16,13 +21,13 @@
 
 .addbtn {
   color: #ffffff;
-  background-color: #1DB954;
+  background-color: var(--spoopify);
   background-repeat: no-repeat;
   border: none;
   outline: none;
-  margin: 4px;
-  padding: 8px 16px;
-  border-radius: 4px;
+  margin: var(--spacing);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  border-radius: var(--spacing);
   cursor: pointer;
 
   -webkit-user-select: none;
@@ -40,15 +45,15 @@
 }
 
 .resultcontainer {
-  min-width: 300px;
+  min-width: var(--width);
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: calc(var(--spacing) * 2);
 }
 
 .result {
   flex: 1;
-  max-width: calc(300px - 42px);
+  max-width: calc(var(--width) - 42px);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -56,7 +61,7 @@
 
 .artist {
   font-size: smaller;
-  color: #82827d;
+  color: var(--secondary-light);
 }
 
 
@@ -66,9 +71,9 @@
   background-repeat: no-repeat;
   border: none;
   outline: none;
-  margin: 4px;
-  padding: 8px 16px;
-  border-radius: 4px;
+  margin: var(--spacing);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  border-radius: var(--spacing);
   cursor: pointer;
 
   -webkit-user-select: none;
