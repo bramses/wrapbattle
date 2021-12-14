@@ -7,6 +7,32 @@
   width: var(--width);
 }
 
+.infocontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--secondary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.info:hover,
+.info:active {
+  color: var(--spoopify);
+  border-color: var(--spoopify);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .input {
   padding: calc(var(--spacing) * 2);
   margin: calc(var(--spacing) * 2) 0px calc(var(--spacing) * 8) 0px;

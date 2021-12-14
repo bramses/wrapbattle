@@ -1,19 +1,21 @@
 import { useState, useCallback } from 'react'
 import throttle from 'lodash.throttle'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import styles from '../styles/SongSearch.module.css'
 import CenterContainer from '../components/CenterContainer'
 import StyledButton from '../components/StyledButton'
-import { useRouter } from 'next/router'
+import Modal from '../components/Modal'
 
 const SongSearch = () => {
   const router = useRouter()
   const [name, setName] = useState('')
+  const [modalOpen, setModalOpen] = useState(true)
 
   const routeTo = (href) => {
     router.push(href)
-}
+  }
 
   const [searchResults, setSearchResults] = useState([])
   const getAndSetSearchResults = useCallback(throttle((value) => {
@@ -70,19 +72,28 @@ const SongSearch = () => {
 
   return (
     <CenterContainer greyBorder>
-      <p>Welcome to WrapBattle</p>
-      <p className={styles.intro}>
-As the speaker it is your job to create a memory your guests will never forget, your Spotify Wrapped.
-<br />
-<br />
-Rules:
-<br />
-- Enter your top 5 songs from Wrapped
-<br />
-- Enter five more songs to mix people up
-<br />
-- Share your link on Twitter or directly, and see how your friends do guessing your top 5
-</p>
+      {modalOpen && (
+        <Modal onClose={() => setModalOpen(false)}>
+            <p>Welcome to WrapBattle<br /><br />
+                As the speaker it is your job to create a memory your guests will never forget, your Spotify Wrapped.
+                <br />
+                <br />
+                Rules:
+                <br />
+                - Enter your top 5 songs from Wrapped
+                <br />
+                - Enter five more songs to mix people up
+                <br />
+                - Share your link on Twitter or directly, and see how your friends do guessing your top 5
+            </p>
+        </Modal>
+      )}
+
+      <div className={styles.infocontainer}>
+        <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
+        <p>Welcome to WrapBattle</p>
+      </div>
+
 
       <h1 className={styles.header}>What should we call You?</h1>
       <input
