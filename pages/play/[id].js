@@ -68,7 +68,7 @@ export default function Play() {
                 points.push(0)
             }
         })
-        
+
         routeTo(`/share/${playerData.slug}/${points.join('')}`)
     }
 
@@ -77,15 +77,17 @@ export default function Play() {
         <CenterContainer flash>
             <h1 className={styles.header}>Spotify WrapBattle</h1>
             <p className={styles.subtitle}>
-                How well do you know <span className={styles.username}>{playerData.username}</span>?<br />
-                Pick the songs that you think are their Top 5 from 2021!<br /><br />
-                But be careful, they added five fake songs to throw you off.<br /> How well do you really know <span className={styles.username}>{playerData.username}</span>? Lets find out!<br /><br />
+                How well do you know <span className={styles.username}>{playerData.username}</span>?<br /><br />
+                Pick the songs that you think are their <span className={styles.topf}>Top 5</span> from 2021!<br /><br />
+                <i>But be careful, they added five fake songs to throw you off.</i><br /><br />
 
                 Rules:<br />
-                - choose songs in order from 1:5<br />
-                - If you get them all in the correct order you get a perfect score<br />
-                - If you get all 5 in a non perfect order you pass<br />
-                - If you get em wrong, wellllll<br />
+                <ul className={styles.list}>
+                    <li>Choose songs in order from 1 to 5<br /></li>
+                    <li>If you get them all in the correct order, you get a perfect score<br /></li>
+                    <li>If you get all 5 in a non perfect order, you pass<br /></li>
+                    <li>If you get em wrong, wellllll<br /></li>
+                </ul>
             </p>
 
             <div className={styles.actions}>
