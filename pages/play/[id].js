@@ -57,19 +57,39 @@ export default function Play() {
 
     const handleSubmit = () => {
         const correctSongs = Object
-        .values(playerData.songIDs)
-        .slice(0, 5)
+            .values(playerData.songIDs)
+            .slice(0, 5)
 
-        let points = []
-        correctSongs.forEach(songId => {
-            if (selectedTracks.includes(songId)) {
-                points.push(1)
-            } else {
-                points.push(0)
+        const orderOff = []
+
+        const points = correctSongs.reduce((scoreAccumulator, correctSongId, currentIndex) => {
+            const whatTheyPicked = selectedTracks.findIndex(songId => songId === correctSongId)
+            if (whatTheyPicked !== -1) {
+                // store the number of positions away for reporting
+                const distance = whatTheyPicked - currentIndex
+                if (distance === 0) {
+                  orderOff.push('0') // no offset
+                } else if (distance > 0) {
+                  orderOff.push('u') // up
+                } else {
+                  orderOff.push('d') // down
+                }
+
+                // 15 pts for getting a song in general
+                let lineScore = 15
+                // additional 5 possible points for order
+                lineScore += 5 - Math.abs((whatTheyPicked + 1) - (currentIndex + 1))
+                return scoreAccumulator + lineScore
             }
-        })
+            // if song was not selected, score for that item is 0
+            orderOff.push('x')
+            return scoreAccumulator
+        }, 0)
 
-        routeTo(`/share/${playerData.slug}/${points.join('')}`)
+        orderOff.push(points)
+        const pointHash = btoa(orderOff.join('-'))
+
+        routeTo(`/share/${playerData.slug}/${pointHash}`)
     }
 
     if (Object.keys(playerData).length === 0) return <></>
