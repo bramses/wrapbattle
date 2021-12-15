@@ -116,7 +116,7 @@ export default function Share() {
         <CenterContainer>
             <h1 className={styles.header}>
                 <Link href="/" >
-                S P O T I F Y  W R A P B A T T L E
+                🎶 SPOTIFY WRAPBATTLE ⚔️
                 </Link>
             </h1>
             <h2 className={styles.quote}>

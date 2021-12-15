@@ -96,7 +96,7 @@ const SongSearch = () => {
           <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
           <h1 className={styles.header}>
                 <Link href="/" >
-                S P O T I F Y  W R A P B A T T L E
+                🎶 SPOTIFY WRAPBATTLE ⚔️
                 </Link>
             </h1>
         </div>
