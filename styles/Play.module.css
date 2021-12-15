@@ -3,6 +3,19 @@
   margin-bottom: calc(var(--spacing) * 2);
 }
 
+.title {
+  width: calc(var(--width) - 24px - 16px);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  /* margin-left: 16px; */
+  color: var(--secondary-light);
+}
+.title:focus,
+.title:active {
+  text-decoration: underline;
+}
+
 .subtitle {
   margin: var(--spacing);
   max-width: var(--width);

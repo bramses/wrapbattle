@@ -114,11 +114,11 @@ export default function Share() {
 
     return (
         <CenterContainer>
-            <h1 className={styles.header}>
-                <Link href="/" >
-                🎶 SPOTIFY WRAPBATTLE ⚔️
-                </Link>
-            </h1>
+          <Link href="/" passHref>
+              <a className={styles.title}>
+                🎶&nbsp;&nbsp;SPOTIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRAPBATTLE ⚔️
+              </a>
+          </Link>
             <h2 className={styles.quote}>
               {quote[0]}
               <span className={styles.name}>{playerData.username}</span>

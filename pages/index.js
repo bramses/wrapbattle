@@ -94,11 +94,11 @@ const SongSearch = () => {
 
         <div className={styles.infocontainer}>
           <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
-          <h1 className={styles.header}>
-                <Link href="/" >
-                🎶 SPOTIFY WRAPBATTLE ⚔️
-                </Link>
-            </h1>
+          <Link href="/" passHref>
+              <a className={styles.title}>
+                🎶&nbsp;&nbsp;SPOTIFY WRAPBATTLE ⚔️
+              </a>
+          </Link>
         </div>
 
 

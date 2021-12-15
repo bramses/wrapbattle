@@ -7,6 +7,19 @@
   width: var(--width);
 }
 
+.title {
+  width: calc(var(--width) - 24px - 16px);
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 16px;
+  color: var(--primary-main);
+}
+.title:focus,
+.title:active {
+  text-decoration: underline;
+}
+
 .infocontainer {
   display: flex;
   align-items: center;

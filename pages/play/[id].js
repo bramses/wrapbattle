@@ -100,12 +100,12 @@ export default function Play() {
     if (Object.keys(playerData).length === 0) return <></>
     return (
         <CenterContainer flash>
-            
-            <h1 className={styles.header}>
-                <Link href="/" >
-                🎶 SPOTIFY WRAPBATTLE ⚔️
-                </Link>
-            </h1>
+
+            <Link href="/" passHref>
+                <a className={styles.title}>
+                  🎶&nbsp;&nbsp;SPOTIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRAPBATTLE ⚔️
+                </a>
+            </Link>
             <div className={styles.subtitle}>
                 How well do you know <span className={styles.username}>{playerData.username}</span>?<br /><br />
                 Pick the songs that you think are their <span className={styles.topf}>Top 5</span> from 2021!<br /><br />
