@@ -7,6 +7,8 @@ import CenterContainer from '../../components/CenterContainer'
 import SpotifyEmbed from '../../components/SpotifyEmbed'
 import StyledButton from '../../components/StyledButton'
 import Modal from '../../components/Modal'
+import Link from 'next/link'
+
 
 export default function Play() {
     const router = useRouter()
@@ -98,7 +100,12 @@ export default function Play() {
     if (Object.keys(playerData).length === 0) return <></>
     return (
         <CenterContainer flash>
-            <h1 className={styles.header}>Spotify WrapBattle</h1>
+            
+            <h1 className={styles.header}>
+                <Link href="/" >
+                S P O T I F Y  W R A P B A T T L E
+                </Link>
+            </h1>
             <div className={styles.subtitle}>
                 How well do you know <span className={styles.username}>{playerData.username}</span>?<br /><br />
                 Pick the songs that you think are their <span className={styles.topf}>Top 5</span> from 2021!<br /><br />

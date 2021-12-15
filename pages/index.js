@@ -7,6 +7,8 @@ import styles from '../styles/SongSearch.module.css'
 import CenterContainer from '../components/CenterContainer'
 import StyledButton from '../components/StyledButton'
 import Modal from '../components/Modal'
+import Link from 'next/link'
+
 
 const SongSearch = () => {
   const router = useRouter()
@@ -92,7 +94,11 @@ const SongSearch = () => {
 
         <div className={styles.infocontainer}>
           <div className={styles.info} onClick={() => setModalOpen(true)}>i</div>
-          <p>Welcome to WrapBattle</p>
+          <h1 className={styles.header}>
+                <Link href="/" >
+                S P O T I F Y  W R A P B A T T L E
+                </Link>
+            </h1>
         </div>
 
 

@@ -6,6 +6,8 @@ import styles from '../../../styles/Share.module.css'
 import CenterContainer from '../../../components/CenterContainer'
 import SpotifyEmbed from '../../../components/SpotifyEmbed'
 import StyledButton from '../../../components/StyledButton'
+import Link from 'next/link'
+
 
 const quotes = [
     {
@@ -112,6 +114,11 @@ export default function Share() {
 
     return (
         <CenterContainer>
+            <h1 className={styles.header}>
+                <Link href="/" >
+                S P O T I F Y  W R A P B A T T L E
+                </Link>
+            </h1>
             <h2 className={styles.quote}>
               {quote[0]}
               <span className={styles.name}>{playerData.username}</span>
