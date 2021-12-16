@@ -14,6 +14,7 @@ const SongSearch = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [modalOpen, setModalOpen] = useState(true)
+  const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false)
 
   const routeTo = (href) => {
     router.push(href)
@@ -52,10 +53,12 @@ const SongSearch = () => {
   }
 
   const handleSubmit = async () => {
+    if (hasSubmittedOnce) return
     console.log('submitting your list of songs to the server!')
     const selectedSongIds = selectedSongs.map(songObj => songObj.id)
     console.log({ songIDs: selectedSongIds, username: name })
     const res = await axios.post('/api/create', { songIDs: selectedSongIds, username: name })
+    setHasSubmittedOnce(true)
     const data = await res.data
     routeTo(`/share/${data.slug}`)
   }
